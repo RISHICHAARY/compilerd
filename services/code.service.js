@@ -26,7 +26,7 @@ const parser = require('sqlite-parser')
 const crypto = require('crypto')
 
 const _runScript = async (cmd, res, runMemoryCheck = false) => {
-    let initialMemory = 0
+    let initialMemory = 1024
     let memoryCheckInterval
     let childProcess
     let isChildKilled = false

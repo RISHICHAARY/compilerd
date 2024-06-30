@@ -298,6 +298,171 @@ const testCases = [
             error: 0,
         },
     },
+    {
+        name: 'go : hello world',
+        reqObject: {
+            language: 'go',
+            script:
+                'package main\n\n' +
+                'import "fmt"\n\n' +
+                'func main() {\n' +
+                '    fmt.Println("hello world")\n' +
+                '}\n',
+        },
+        expectedResponse: {
+            val: 'hello world\n',
+            status: 200,
+            error: 0,
+        },
+    },
+    {
+        name: 'php : hello world',
+        reqObject: {
+            language: 'php',
+            script: '<?php echo "hello world"; ?>',
+        },
+        expectedResponse: {
+            val: 'hello world',
+            status: 200,
+            error: 0,
+        },
+    },
+    {
+        name: 'scala: hello world',
+        reqObject: {
+            language: 'scala',
+            script:
+                'object Main extends App {\n' +
+                '  println("hello world")\n' +
+                '}',
+        },
+        expectedResponse: {
+            val: 'hello world\n', 
+            status: 200,
+            error: 0,
+        },
+    },
+    {
+        name: 'python : syntax error',
+        reqObject: {
+            language: 'python',
+            script: 'print(\'Hello! world\''
+        },
+        expectedResponse:{
+            val:'',
+            status:200,
+            error:1
+        }
+    },
+    {
+        name: 'c : syntax error',
+        reqObject: {
+            language: 'c',
+            script:
+                '#include<stdio.h>\n\n' +
+                'int main(){\n\n' +
+                '    printf("hello world");\n' +
+                '    return 0\n' +
+                '}\n',
+        },
+        expectedResponse:{
+            val:'',
+            status:200,
+            error:1
+        }
+    },
+    {
+        name: 'cpp : syntax error',
+        reqObject: {
+            language: 'cpp',
+            script:
+                '#include<bits/stdc++.h>\n' +
+                'using namespace std;\n' +
+                'int main(){\n' +
+                '    cout >> "hello world";\n' +
+                'return 0;\n' +
+                '}\n',
+        },
+        expectedResponse:{
+            val:'',
+            status:200,
+            error:1
+        }
+    },
+    {
+        name: 'nodejs : syntax error',
+        reqObject: {
+            language: 'nodejs',
+            script: 'console.log(\'hello world\''
+        },
+        expectedResponse:{
+            val:'',
+            status:200,
+            error:1
+        }
+    },
+    {
+        name: 'java : syntax error',
+        reqObject: {
+            language: 'java',
+            script:
+                'import java.util.Scanner;\n' +
+                'public class Solution {\n' +
+                '    public static void main(String[] args) {\n' +
+                '        System.out.println("hello world"\n' +
+                '    }\n' +
+                '}\n',
+        },
+        expectedResponse:{
+            val:'',
+            status:200,
+            error:1
+        }
+    },
+    {
+        name: 'go : syntax error',
+        reqObject: {
+            language: 'go',
+            script:
+                'package main\n\n' +
+                'import "fmt"\n\n' +
+                'func main() {\n' +
+                '    fmt.Println("hello world\n' +
+                '}\n',
+        },
+        expectedResponse:{
+            val:'',
+            status:200,
+            error:1
+        }
+    },
+    {
+        name: 'php : syntax error',
+        reqObject: {
+            language: 'php',
+            script: '<?php echo "hello world"',
+        },
+        expectedResponse:{
+            val:'',
+            status:200,
+            error:1
+        }
+    },
+    {
+        name: 'scala : syntax error',
+        reqObject: {
+            language: 'scala',
+            script:
+                'object Main extends App {\n' +
+                '  println("hello world\n' +
+                '}',
+        },
+        expectedResponse:{
+            val:'',
+            status:200,
+            error:1
+        }
+    },
 ]
 
 module.exports = { testCases }

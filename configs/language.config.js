@@ -1,4 +1,6 @@
-const { CPP, C, PYTHON, JAVA, NODEJS, RUBY, PROMPTV1, PROMPTV2 } = require('../enums/supportedLanguages')
+const { compile } = require('joi')
+const { CPP, C, PYTHON, JAVA, NODEJS, RUBY, PROMPTV1, PROMPTV2, GO, PHP, SCALA } = require('../enums/supportedLanguages')
+const { timeout } = require('puppeteer')
 const ONE_MB = 1024 // ulimit uses Kilobyte as base unit
 const ALLOWED_RAM = process.env.ALLOWED_RAM || 512
 
@@ -50,6 +52,28 @@ const LANGUAGES_CONFIG = {
     },
     [PROMPTV2]: {
         model: 'gpt-3.5-turbo-1106',
+    },
+    //Added languages
+    [GO]:{
+        compile: 'go build -o main main.go',
+        run: './main',
+        timeout: 10,
+        filename: 'solution.go',
+        memory: ALLOWED_RAM * ONE_MB
+    },
+    [PHP]:{
+        compile: '',
+        run: 'php solution.php',
+        timeout: 10,
+        filename: 'solution.php',
+        memory: ALLOWED_RAM * ONE_MB
+    },
+    [SCALA]: {
+        compile: 'scalac solution.scala',
+        run: 'scala solution', // Assuming object/class name matches file name
+        timeout: 2,
+        filename: 'solution.scala',
+        memory: ALLOWED_RAM * ONE_MB,
     },
 }
 
